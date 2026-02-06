@@ -1,0 +1,168 @@
+:root {
+    --pink: #ff6b9d;
+    --rose: #c06c84;
+    --lavender: #a29bfe;
+    --peach: #fab1a0;
+    --ink: #6c5b7b;
+    --soft-white: rgba(255, 255, 255, 0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif; 
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--ink), var(--rose), var(--pink));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #9a6b85;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatInPlace 4s ease-in-out infinite;
+    opacity: 0.4;
+    color: var(--rose);
+}
+
+@keyframes floatInPlace {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+.container {
+    text-align: center;
+    background: rgba(241, 237, 240, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 3.5rem 2.5rem;
+    border-radius: 32px;
+    box-shadow:
+        0 25px 60px rgba(190, 120, 150, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 550px; 
+}
+
+.gif-container {
+    margin: 1.5rem 0;
+    font-size: 80px; 
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 10px 15px rgba(192, 108, 132, 0.2));
+    animation: emojiFloat 3s ease-in-out infinite;
+}
+
+@keyframes emojiFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    font-family: 'Italiana', serif; 
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--ink), var(--rose), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.question {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    color: #9a6b85;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.button-container {
+    position: relative;
+    height: 120px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    padding: 0.9rem 2.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 999px; 
+    cursor: pointer;
+    font-weight: 600;
+    position: absolute; 
+    transition: all 0.35s ease;
+    letter-spacing: 0.3px;
+}
+
+#yesBtn {
+    background: linear-gradient(135deg, var(--rose), #ce8599);
+    color: white;
+    left: 20%; 
+    z-index: 11;
+    -webkit-font-smoothing: antialiased;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 14px 30px rgba(224,106,156,0.45);
+}
+
+#noBtn {
+    background: rgba(255,255,255,0.75);
+    color: var(--ink);
+    left: 60%; 
+    z-index: 10;
+    opacity: 0.8;
+}
+
+.success-message {
+    display: none;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.love-message { 
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem; 
+    color: var(--ink); 
+    margin-top: 1rem;
+}
+
+.success-gif {
+    width: 100%;
+    max-width: 300px; 
+    border-radius: 22px; 
+    margin: 1.5rem 0;
+    box-shadow: 0 15px 35px rgba(192, 108, 132, 0.25);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.success-message {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeUp 0.8s ease forwards;
+}
