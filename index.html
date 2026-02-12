@@ -60,21 +60,39 @@
 
         distributeHearts();
 
-        noBtn.addEventListener('mouseover', function() {
-            const currentLeft = noBtn.offsetLeft;
-            const randomJump = Math.floor(Math.random() * 60) + 60;
-            let newLeft = currentLeft + randomJump;
-            const randomTop = Math.floor(Math.random() * 100); 
-            if (newLeft > 430) {
-                newLeft = 100; 
-            }
-            noBtn.style.left = newLeft + "px";
+        function moveNoButton() {
+            const containerRect = btnContainer.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            
+            // Get random position within container
+            const maxLeft = containerRect.width - btnRect.width;
+            const maxTop = containerRect.height - btnRect.height;
+            
+            const randomLeft = Math.floor(Math.random() * maxLeft);
+            const randomTop = Math.floor(Math.random() * maxTop);
+            
+            noBtn.style.left = randomLeft + "px";
             noBtn.style.top = randomTop + "px";
+        }
+
+        // For desktop: mouseover
+        noBtn.addEventListener('mouseover', moveNoButton);
+
+        // For mobile: touchstart (fires before click on touch devices)
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Prevent click from firing
+            moveNoButton();
+        });
+
+        // Backup: if someone manages to click it anyway
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            moveNoButton();
         });
 
         yesBtn.addEventListener('click', function() {
             questionCard.style.display = 'none';
-            successMessage.style.display = 'block';
+            successMessage.style.display = 'flex';
             for (let i = 0; i < 15; i++) {
                 createHeart(Math.random() * 100, Math.random() * 100);
             }
