@@ -75,16 +75,13 @@
             noBtn.style.top = randomTop + "px";
         }
 
-        // For desktop: mouseover
         noBtn.addEventListener('mouseover', moveNoButton);
 
-        // For mobile: touchstart (fires before click on touch devices)
         noBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault(); // Prevent click from firing
+            e.preventDefault(); 
             moveNoButton();
         });
 
-        // Backup: if someone manages to click it anyway
         noBtn.addEventListener('click', function(e) {
             e.preventDefault();
             moveNoButton();
